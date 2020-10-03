@@ -25,8 +25,11 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUN-xh-bM2">
                                 <rect key="frame" x="170.5" y="63" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bJ9-dH-kX0"/>
+                                </connections>
                             </button>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" maximumValue="100" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="7GK-91-ykG">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" maximumValue="100" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="7GK-91-ykG">
                                 <rect key="frame" x="265" y="8" width="94" height="32"/>
                                 <connections>
                                     <action selector="stepperChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="VtC-aQ-DKr"/>
@@ -69,6 +72,8 @@
                     </view>
                     <connections>
                         <outlet property="gameFieldView" destination="PwJ-XQ-Dug" id="Otx-AW-4DV"/>
+                        <outlet property="startButton" destination="hUN-xh-bM2" id="uzG-NF-z3u"/>
+                        <outlet property="stepper" destination="7GK-91-ykG" id="orZ-eI-I0Y"/>
                         <outlet property="timeLabel" destination="qX0-A4-ehW" id="50D-uj-BfD"/>
                     </connections>
                 </viewController>
