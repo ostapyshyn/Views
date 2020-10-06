@@ -44,12 +44,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PwJ-XQ-Dug">
                                 <rect key="frame" x="16" y="101" width="343" height="517"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Triangle" translatesAutoresizingMaskIntoConstraints="NO" id="3wm-ox-rks">
-                                        <rect key="frame" x="8" y="8" width="80" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Triangle" translatesAutoresizingMaskIntoConstraints="NO" id="3wm-ox-rks">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="293-b5-Nps"/>
+                                            <constraint firstAttribute="width" constant="80" id="qwD-Tq-yD6"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="3wm-ox-rks" firstAttribute="top" secondItem="PwJ-XQ-Dug" secondAttribute="top" id="bMQ-Cm-nmi"/>
+                                    <constraint firstItem="3wm-ox-rks" firstAttribute="leading" secondItem="PwJ-XQ-Dug" secondAttribute="leading" id="qyp-rU-3zw"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -72,6 +79,9 @@
                     </view>
                     <connections>
                         <outlet property="gameFieldView" destination="PwJ-XQ-Dug" id="Otx-AW-4DV"/>
+                        <outlet property="gameObject" destination="3wm-ox-rks" id="2Rd-SG-1sQ"/>
+                        <outlet property="shapeX" destination="qyp-rU-3zw" id="2j2-M6-Xqd"/>
+                        <outlet property="shapeY" destination="bMQ-Cm-nmi" id="UlB-kX-Rhk"/>
                         <outlet property="startButton" destination="hUN-xh-bM2" id="uzG-NF-z3u"/>
                         <outlet property="stepper" destination="7GK-91-ykG" id="orZ-eI-I0Y"/>
                         <outlet property="timeLabel" destination="qX0-A4-ehW" id="50D-uj-BfD"/>
