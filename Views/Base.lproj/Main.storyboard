@@ -44,12 +44,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PwJ-XQ-Dug">
                                 <rect key="frame" x="16" y="101" width="343" height="517"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Triangle" translatesAutoresizingMaskIntoConstraints="NO" id="3wm-ox-rks">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Triangle" translatesAutoresizingMaskIntoConstraints="NO" id="3wm-ox-rks">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="293-b5-Nps"/>
                                             <constraint firstAttribute="width" constant="80" id="qwD-Tq-yD6"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="ykx-cT-h1o" appends="YES" id="IsN-qL-bU6"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -80,6 +84,7 @@
                     <connections>
                         <outlet property="gameFieldView" destination="PwJ-XQ-Dug" id="Otx-AW-4DV"/>
                         <outlet property="gameObject" destination="3wm-ox-rks" id="2Rd-SG-1sQ"/>
+                        <outlet property="scoreLabel" destination="1cy-5N-J76" id="4Ef-ZH-R8G"/>
                         <outlet property="shapeX" destination="qyp-rU-3zw" id="2j2-M6-Xqd"/>
                         <outlet property="shapeY" destination="bMQ-Cm-nmi" id="UlB-kX-Rhk"/>
                         <outlet property="startButton" destination="hUN-xh-bM2" id="uzG-NF-z3u"/>
@@ -88,6 +93,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ykx-cT-h1o">
+                    <connections>
+                        <action selector="objectTapped:" destination="BYZ-38-t0r" id="Q33-rB-Z5T"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="140" y="114.69265367316342"/>
         </scene>

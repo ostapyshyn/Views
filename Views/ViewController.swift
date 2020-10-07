@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet var shapeX: NSLayoutConstraint!
     @IBOutlet var shapeY: NSLayoutConstraint!
     @IBOutlet var gameObject: UIImageView!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     
     private var isGameActive = false
@@ -23,12 +24,14 @@ class ViewController: UIViewController {
     private var gameTimer: Timer?
     private var timer: Timer?
     private let displayDuration: TimeInterval = 2
+    private var score = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         gameFieldView.layer.borderWidth = 1
         gameFieldView.layer.borderColor = UIColor.gray.cgColor
         gameFieldView.layer.cornerRadius = 5
+        updateUI()
     }
     
     @IBAction func stepperChanged(_ sender: UIStepper) {
@@ -44,11 +47,23 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func objectTapped(_ sender: UITapGestureRecognizer) {
+        guard isGameActive else { return }
+        repositionImageWithTimer()
+        score += 1
+    }
     
-    private func startGame() {
+    private func repositionImageWithTimer() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: displayDuration, target: self, selector: #selector(moveImage), userInfo: nil, repeats: true)
         timer?.fire()
+    }
+    
+    
+    
+    private func startGame() {
+        score = 0
+        repositionImageWithTimer()
         
         gameTimer?.invalidate()
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameTimerTick), userInfo: nil, repeats: true)
@@ -63,18 +78,20 @@ class ViewController: UIViewController {
         updateUI()
         gameTimer?.invalidate()
         timer?.invalidate()
+        scoreLabel.text = "Last count: \(score)"
     }
     
     @objc private func gameTimerTick() {
-            gameTimeLeft -= 1
-            if gameTimeLeft <= 0 {
-                stopGame()
-            } else {
-                updateUI()
-            }
+        gameTimeLeft -= 1
+        if gameTimeLeft <= 0 {
+            stopGame()
+        } else {
+            updateUI()
         }
+    }
     
     private func updateUI() {
+        gameObject.isHidden = !isGameActive
         stepper.isEnabled = !isGameActive
         if isGameActive {
             timeLabel.text = "Left: \(Int(gameTimeLeft)) sec"
