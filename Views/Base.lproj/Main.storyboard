@@ -16,32 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time: 30 sec" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qX0-A4-ehW">
-                                <rect key="frame" x="16" y="13.5" width="98.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUN-xh-bM2">
-                                <rect key="frame" x="170.5" y="63" width="34" height="30"/>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <action selector="startTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bJ9-dH-kX0"/>
-                                </connections>
-                            </button>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" maximumValue="100" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="7GK-91-ykG">
-                                <rect key="frame" x="265" y="8" width="94" height="32"/>
-                                <connections>
-                                    <action selector="stepperChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="VtC-aQ-DKr"/>
-                                </connections>
-                            </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last count: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cy-5N-J76">
                                 <rect key="frame" x="137.5" y="626" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PwJ-XQ-Dug" customClass="GameFieldView" customModule="Views" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PwJ-XQ-Dug" customClass="GameFieldView" customModule="Views" customModuleProvider="target">
                                 <rect key="frame" x="16" y="101" width="343" height="517"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -50,31 +31,27 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TeU-Nn-4Ud" customClass="GameControlViewClass" customModule="Views" customModuleProvider="target">
+                                <rect key="frame" x="16" y="14" width="240" height="72"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hUN-xh-bM2" firstAttribute="top" secondItem="7GK-91-ykG" secondAttribute="bottom" constant="23" id="B7J-vd-vwe"/>
                             <constraint firstItem="1cy-5N-J76" firstAttribute="top" secondItem="PwJ-XQ-Dug" secondAttribute="bottom" constant="8" symbolic="YES" id="Dsz-zA-SRz"/>
+                            <constraint firstItem="TeU-Nn-4Ud" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Hnz-Yi-QpL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1cy-5N-J76" secondAttribute="bottom" constant="20" id="Mmo-aM-hB2"/>
+                            <constraint firstItem="PwJ-XQ-Dug" firstAttribute="top" secondItem="TeU-Nn-4Ud" secondAttribute="bottom" constant="8" id="Vus-cd-aR5"/>
                             <constraint firstItem="1cy-5N-J76" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wo5-Ey-uxD"/>
-                            <constraint firstItem="7GK-91-ykG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qX0-A4-ehW" secondAttribute="trailing" constant="8" symbolic="YES" id="dGF-QV-doB"/>
-                            <constraint firstItem="hUN-xh-bM2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eVT-zF-lda"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PwJ-XQ-Dug" secondAttribute="trailing" constant="16" id="gR4-t7-eLt"/>
                             <constraint firstItem="PwJ-XQ-Dug" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="hma-lt-3fF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7GK-91-ykG" secondAttribute="trailing" constant="16" id="i3a-Nz-P1E"/>
-                            <constraint firstItem="qX0-A4-ehW" firstAttribute="centerY" secondItem="7GK-91-ykG" secondAttribute="centerY" id="miY-zi-Qwf"/>
-                            <constraint firstItem="qX0-A4-ehW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="oNS-DS-jWh"/>
-                            <constraint firstItem="7GK-91-ykG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="sj2-fe-pMF"/>
-                            <constraint firstItem="PwJ-XQ-Dug" firstAttribute="top" secondItem="hUN-xh-bM2" secondAttribute="bottom" constant="8" symbolic="YES" id="zSz-d3-pve"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TeU-Nn-4Ud" secondAttribute="trailing" constant="16" id="uOB-Xs-QvR"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="gameFieldView" destination="PwJ-XQ-Dug" id="Otx-AW-4DV"/>
                         <outlet property="scoreLabel" destination="1cy-5N-J76" id="4Ef-ZH-R8G"/>
-                        <outlet property="startButton" destination="hUN-xh-bM2" id="uzG-NF-z3u"/>
-                        <outlet property="stepper" destination="7GK-91-ykG" id="orZ-eI-I0Y"/>
-                        <outlet property="timeLabel" destination="qX0-A4-ehW" id="50D-uj-BfD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
