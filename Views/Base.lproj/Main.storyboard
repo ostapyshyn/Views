@@ -50,6 +50,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="gameControl" destination="TeU-Nn-4Ud" id="yoZ-Vb-pUx"/>
                         <outlet property="gameFieldView" destination="PwJ-XQ-Dug" id="Otx-AW-4DV"/>
                         <outlet property="scoreLabel" destination="1cy-5N-J76" id="4Ef-ZH-R8G"/>
                     </connections>
