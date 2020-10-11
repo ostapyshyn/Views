@@ -10,9 +10,12 @@ import UIKit
 @IBDesignable
 class GameControlViewClass: UIView {
     
-    @IBOutlet var timeLabel: UILabel!
-    @IBOutlet var stepper: UIStepper!
-    @IBOutlet var startButton: UIButton!
+    private let timeLabel = UILabel()
+    private let stepper = UIStepper()
+    private let actionButton = UIButton()
+    
+    private let timeToStepperMargin: CGFloat = 8
+    private let actionButtonTopMargin: CGFloat = 8
     
     
     
@@ -47,41 +50,76 @@ class GameControlViewClass: UIView {
     }
     
     private func setupViews() {
-        let xibView = loadViewFromXib()
-        xibView.frame = self.bounds
-        xibView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.addSubview(xibView)
+        addSubview(timeLabel)
+        addSubview(stepper)
+        addSubview(actionButton)
+        
+        timeLabel.translatesAutoresizingMaskIntoConstraints = true
+        stepper.translatesAutoresizingMaskIntoConstraints = true
+        actionButton.translatesAutoresizingMaskIntoConstraints = true
+        
+        stepper.addTarget(self, action: #selector(stepperChanged), for: .valueChanged)
+        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+        
+        updateUI()
+
+        actionButton.setTitleColor(actionButton.tintColor, for: .normal)
+        
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        let stepperSize = stepper.intrinsicContentSize
+        let timeLabelSize = timeLabel.intrinsicContentSize
+        let buttonSize = actionButton.intrinsicContentSize
+        
+        let width = timeLabelSize.width + timeToStepperMargin + stepperSize.width
+        let height = stepperSize.height + actionButtonTopMargin + buttonSize.height
+        return CGSize(width: width, height: height)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let stepperSize = stepper.intrinsicContentSize
+        stepper.frame = CGRect(origin: CGPoint(x: bounds.maxX - stepperSize.width, y: bounds.minY), size: stepperSize)
+        
+        let timeLabelSize = timeLabel.intrinsicContentSize
+        timeLabel.frame = CGRect(
+            origin: CGPoint(x: bounds.minX, y: bounds.minY + (stepperSize.height - timeLabelSize.height) / 2),
+            size: timeLabelSize)
+        
+        let buttonSize = actionButton.intrinsicContentSize
+        actionButton.frame = CGRect(
+            origin: CGPoint(x: bounds.minX + (bounds.width - buttonSize.width) / 2, y: stepper.frame.maxY + actionButtonTopMargin),
+            size: buttonSize)
     }
     
     var startStopHandler: (() -> Void)?
     
     
-    @IBAction func stepperChanged(_ sender: UIStepper) {
+    @objc func stepperChanged() {
         updateUI()
     }
     
-    @IBAction func buttonTapped(_ sender: UIButton) {
+    @objc private func actionButtonTapped() {
         startStopHandler?()
     }
     
     
     
-    private func loadViewFromXib() -> UIView {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName:  "GameControlView", bundle: bundle)
-        return nib.instantiate(withOwner: self, options: nil).first! as! UIView
-    }
+    
     
     private func updateUI() {
         
         stepper.isEnabled = !isGameActive
         if isGameActive {
             timeLabel.text = "Left: \(Int(gameTimeLeft)) sec"
-            startButton.setTitle("Stop", for: .normal)
+            actionButton.setTitle("Stop", for: .normal)
         } else {
             timeLabel.text = "Time: \(Int(stepper.value)) sec"
-            startButton.setTitle("Start", for: .normal)
+            actionButton.setTitle("Start", for: .normal)
         }
+        setNeedsLayout()
     }
     
     

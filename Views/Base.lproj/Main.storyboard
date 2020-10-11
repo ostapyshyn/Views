@@ -22,8 +22,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PwJ-XQ-Dug" customClass="GameFieldView" customModule="Views" customModuleProvider="target">
-                                <rect key="frame" x="16" y="101" width="343" height="517"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PwJ-XQ-Dug" customClass="GameFieldView" customModule="Views" customModuleProvider="target">
+                                <rect key="frame" x="16" y="82" width="343" height="536"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="size" keyPath="shapeSize">
@@ -31,14 +31,15 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TeU-Nn-4Ud" customClass="GameControlViewClass" customModule="Views" customModuleProvider="target">
-                                <rect key="frame" x="16" y="14" width="240" height="72"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TeU-Nn-4Ud" customClass="GameControlViewClass" customModule="Views" customModuleProvider="target">
+                                <rect key="frame" x="16" y="0.0" width="343" height="74"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="TeU-Nn-4Ud" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="9ZF-X8-XwE"/>
                             <constraint firstItem="1cy-5N-J76" firstAttribute="top" secondItem="PwJ-XQ-Dug" secondAttribute="bottom" constant="8" symbolic="YES" id="Dsz-zA-SRz"/>
                             <constraint firstItem="TeU-Nn-4Ud" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Hnz-Yi-QpL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1cy-5N-J76" secondAttribute="bottom" constant="20" id="Mmo-aM-hB2"/>
@@ -62,9 +63,14 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="140" y="114.69265367316342"/>
+            <point key="canvasLocation" x="-129" y="9"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="TeU-Nn-4Ud">
+            <size key="intrinsicContentSize" width="190.5" height="74"/>
+        </designable>
+    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
